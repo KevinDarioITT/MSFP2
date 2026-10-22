@@ -12,16 +12,11 @@ El caso de estudio representa el **sistema arterial** mediante el **modelo Windk
 **Institución:** Tecnológico Nacional de México / Instituto Tecnológico de Tijuana  
 **Asignatura:** Modelado de Sistemas Fisiológicos  
 **Programa:** Ingeniería Biomédica  
-**Estudiante:** Nombre completo · Número de control · correo@tijuana.tecnm.mx
+**Estudiante:** Kevin Dario De La Cruz Bojorquez · 20210777 · l20210777@tijuana.tecnm.mx
 
 **Repositorio de la asignatura:** https://github.com/DrPaulValle/MSF-IBF1020  
 **Sede:** Blvd. Alberto Limón Padilla s/n, Tijuana, C. P. 22454, B. C., México.
 
-> **Cómo usar este README:** todo lo marcado como **[COMPLETAR]** corresponde a resultados propios de la práctica (ganancias PID, figuras, métricas, nombres de archivos) que no se pueden deducir de la guía. Busca ese texto en el archivo y reemplázalo con tus datos. Las secciones de modelo matemático, polos y predicciones analíticas ya están calculadas a partir de los parámetros de la guía.
-
----
-
-<a id="contenido"></a>
 ## Contenido
 
 1. [Resumen](#resumen)
