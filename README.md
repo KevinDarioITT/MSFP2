@@ -304,23 +304,6 @@ Cálculo numérico de la respuesta al escalón unitario de cada $G(s)$ (útil co
 
 El sobreimpulso aparece en los tres casos, incluso en los sobreamortiguados, por la presencia del cero en $s=-10\ \mathrm{s^{-1}}$. A mayor $C$, la respuesta es más lenta y con mayor sobreimpulso.
 
-#### Verificación en MATLAB
-
-```matlab
-Z = 0.010;  L = 0.001;  R = 1.000;       % mmHg*s/ml, mmHg*s^2/ml, mmHg*s/ml
-C = [3.5 1.5 1.0];                        % ml/mmHg: hipo, normo, hiper
-caso = ["hipotenso" "normotenso" "hipertenso"];
-
-for k = 1:3
-    G = tf([L Z], [Z*L*C(k), L*(1+Z/R), Z]);
-    fprintf("%s\n", caso(k));
-    disp(pole(G));          % polos
-    disp(dcgain(G));        % ganancia en estado estacionario (= 1)
-end
-```
-
-> **[COMPLETAR]** Agrega aquí tu figura de la ubicación de los polos en el plano complejo (por ejemplo con `pzmap`) y tu bosquejo previo de la respuesta.
-
 [Volver al contenido](#contenido)
 
 ---
@@ -339,8 +322,6 @@ La entrada $P_a(t)$ se genera en Simulink con el bloque **Uniform Random Number*
 | Intervalo de simulación | $t\in[0,15]\ \mathrm{s}$ |
 
 La señal es **constante por tramos** (cambia de valor cada $0.1\ \mathrm{s}$, unos 150 valores en 15 s). Se emplea **exactamente la misma realización** para los modelos hipotenso, normotenso e hipertenso, de manera que las diferencias entre sus respuestas sean consecuencia exclusiva de sus parámetros.
-
-> **Nota para la reproducción en Python:** el generador aleatorio de Simulink con `seed = 106` **no coincide** con los generadores de NumPy. Para usar la misma realización en Python, exporta la señal desde Simulink (por ejemplo con un bloque *To Workspace* o guardándola en un archivo `.csv`/`.mat`) y cárgala en el código de Python.
 
 [Volver al contenido](#contenido)
 
@@ -367,8 +348,6 @@ El cuaderno computacional ejecuta los modelos de Simulink con la misma realizaci
 2. identifica correctamente las variables y sus unidades;
 3. compara referencia, caso y sistema controlado; y
 4. guarda las figuras en formato PDF.
-
-> **[COMPLETAR]** Indica los nombres reales de tu cuaderno `.mlx`, tus modelos `.slx` y la función de graficación, y agrega capturas de los diagramas de Simulink y del circuito de Simscape.
 
 [Volver al contenido](#contenido)
 
@@ -434,19 +413,6 @@ Como verificación independiente, se implementan en Python (Visual Studio Code) 
 4. construye los sistemas en lazo cerrado de los casos hipotenso e hipertenso; y
 5. genera y guarda las figuras para compararlas con MATLAB/Simulink.
 
-Verificación mínima de los polos en Python:
-
-```python
-import numpy as np
-
-Z, L, R = 0.010, 0.001, 1.000
-for nombre, C in [("hipotenso", 3.5), ("normotenso", 1.5), ("hipertenso", 1.0)]:
-    den = [Z*L*C, L*(1 + Z/R), Z]
-    print(nombre, np.roots(den))
-```
-
-> **[COMPLETAR]** Indica el nombre de tu archivo `.py`, las bibliotecas que importa realmente (por ejemplo `numpy`, `scipy`, `matplotlib` o `control`) y las ganancias que sustituiste.
-
 [Volver al contenido](#contenido)
 
 ---
@@ -464,10 +430,6 @@ Se elabora con BioRender (o herramienta equivalente) un diagrama del sistema car
 | $C$ | Distensibilidad arterial total | Capacidad de aorta y grandes arterias de distenderse y almacenar volumen |
 | $R$ | Resistencia periférica total | Oposición al flujo en los vasos periféricos |
 | $P_p(t)$ | Presión asociada con la distensibilidad | Presión arterial sobre la compliancia arterial |
-
-> **[COMPLETAR]** Inserta tu diagrama, por ejemplo `diagrama_biologico.png`:
->
-> `![Diagrama biológico del modelo Windkessel](diagrama_biologico.png)`
 
 [Volver al contenido](#contenido)
 
