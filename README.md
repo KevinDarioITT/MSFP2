@@ -535,50 +535,15 @@ La práctica sigue la secuencia de 16 actividades del instructivo (marca las que
 ---
 
 <a id="estructura"></a>
-## Estructura del repositorio
-
-Organización **sugerida**, a partir de los elementos que solicita el instructivo (ajusta los nombres a los de tus archivos reales):
-
-```text
-.
-├── README.md                         # Reporte de la práctica
-├── CITATION.cff                      # Datos de citación (alumno y repositorio)
-├── Apellido_NoControl.mlx            # Cuaderno MATLAB
-├── Apellido_NoControl.pdf            # Exportación del cuaderno
-├── windkessel.slx                    # Modelos Simulink (estado, función de transferencia, control)
-├── windkessel_simscape.slx           # Circuito en Simscape Electrical
-├── windkessel.py                     # Implementación en Python
-├── senal_entrada.csv                 # Señal aleatoria utilizada (seed 106)
-├── diagrama_biologico.png            # Diagrama biológico (BioRender)
-├── tune_pid_hipo.png                 # Evidencia de sintonización, caso hipotenso
-├── tune_pid_hiper.png                # Evidencia de sintonización, caso hipertenso
-├── lazo_abierto_matlab.pdf
-├── lazo_abierto_python.pdf
-├── hipo_pid_matlab.pdf
-├── hipo_pid_python.pdf
-├── hiper_pid_matlab.pdf
-├── hiper_pid_python.pdf
-└── evidencias/                       # Capturas de las simulaciones y archivos complementarios
-```
-
-**Criterio de nombres:** los nombres de archivos de esta estructura son **propuestas organizativas**. Si usas otros nombres o subcarpetas, actualiza las rutas en este README.
-
-[Volver al contenido](#contenido)
-
----
-
-<a id="requisitos"></a>
 ## Requisitos
 
 - **MATLAB** y **Simulink**.
 - **Simscape Electrical**, para el circuito equivalente.
 - Herramientas de Simulink para sintonización del bloque **PID Controller** (*Tune*).
 - **Control System Toolbox**, para las funciones `tf`, `pole`, `dcgain` y `pzmap` usadas en las verificaciones.
-- **Python** y **Visual Studio Code**, con las bibliotecas que importe tu código (**[COMPLETAR]**).
+- **Python** y **Visual Studio Code**, con las bibliotecas que importe tu código.
 - **Git y GitHub**, para organizar y presentar el repositorio.
 - **BioRender** o herramienta equivalente, para el diagrama biológico.
-
-Las versiones mínimas del software no se especifican en el instructivo. **[COMPLETAR]** Indica las versiones que usaste (MATLAB, Python, bibliotecas).
 
 [Volver al contenido](#contenido)
 
