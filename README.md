@@ -381,20 +381,9 @@ T(s)=\frac{K(s)\,G_{\text{caso}}(s)}{1+K(s)\,G_{\text{caso}}(s)},
 P_{p,\text{caso,PID}}(s)=T(s)\,P_{p,\text{normo}}(s).
 $$
 
-> Verifica que este esquema coincide con la conexión de tu modelo de Simulink; si la tuya difiere en algún detalle, documéntalo aquí.
-
 ### 2. Sintonización
 
 Los controladores se sintonizan **de forma independiente** con la herramienta **Tune** del bloque *PID Controller* de Simulink, buscando una respuesta **estable** y una **reducción del error** entre cada caso y la respuesta normotensa. Debe conservarse evidencia de la configuración utilizada durante la sintonización.
-
-> **[COMPLETAR]** Ganancias obtenidas:
-
-| Controlador | $k_P$ | $k_I$ | $k_D$ | Otros ajustes (forma del PID, filtro derivativo $N$, tiempo de respuesta, etc.) |
-|---|---:|---:|---:|---|
-| Hipotenso ($k_{\cdot,\text{hipo}}$) | **[COMPLETAR]** | **[COMPLETAR]** | **[COMPLETAR]** | **[COMPLETAR]** |
-| Hipertenso ($k_{\cdot,\text{hiper}}$) | **[COMPLETAR]** | **[COMPLETAR]** | **[COMPLETAR]** | **[COMPLETAR]** |
-
-> **[COMPLETAR]** Captura de la ventana de *Tune* de cada controlador, por ejemplo `tune_pid_hipo.png` y `tune_pid_hiper.png`.
 
 Como la sintonización depende de la versión del software y del criterio elegido, no es necesario reproducir exactamente valores de referencia: lo importante es justificar el criterio y demostrar que los controladores son estables y reducen el error.
 
@@ -442,54 +431,11 @@ Se elabora con BioRender (o herramienta equivalente) un diagrama del sistema car
 
 Se aplica la misma señal aleatoria a los tres modelos y se registra $P_p(t)$, comparando $P_{p,\text{hipo}}(t)$, $P_{p,\text{normo}}(t)$ y $P_{p,\text{hiper}}(t)$.
 
-> **[COMPLETAR]** Figura de lazo abierto (MATLAB y Python), por ejemplo:
->
-> `![Lazo abierto](lazo_abierto_matlab.png)`
-
 **Expectativa según el análisis previo** (para contrastar con tus resultados): como $G(0)=1$ en los tres modelos, la presión media debería ser similar y las diferencias deberían aparecer en la dinámica: el caso hipotenso ($C$ mayor) debería suavizar más los cambios bruscos de la entrada y responder más lento, mientras que el hipertenso ($C$ menor) debería seguirlos más rápido y de forma más pronunciada.
-
-> **[COMPLETAR]** Describe qué observaste realmente y si coincide con esta expectativa.
 
 ### 2. Respuesta en lazo cerrado
 
 Se comparan, para el caso hipotenso, $P_{p,\text{normo}}(t)$, $P_{p,\text{hipo}}(t)$ y $P_{p,\text{hipo,PID}}(t)$, y para el caso hipertenso, $P_{p,\text{normo}}(t)$, $P_{p,\text{hiper}}(t)$ y $P_{p,\text{hiper,PID}}(t)$.
-
-> **[COMPLETAR]** Figuras de lazo cerrado (MATLAB y Python).
-
-### 3. Métricas del error *(propuesta opcional)*
-
-Para cuantificar el efecto de cada controlador se sugiere reportar, por ejemplo, la raíz del error cuadrático medio entre la referencia y la salida, $\mathrm{RMSE}=\sqrt{\frac{1}{T}\int_0^T e^2(t)\,dt}$, antes y después del PID.
-
-| Caso | RMSE lazo abierto (mmHg) | RMSE lazo cerrado (mmHg) |
-|---|---:|---:|
-| Hipotenso | **[COMPLETAR]** | **[COMPLETAR]** |
-| Hipertenso | **[COMPLETAR]** | **[COMPLETAR]** |
-
-### 4. Verificación cruzada entre plataformas
-
-Se comparan las respuestas obtenidas con (a) ecuaciones de estado en Simulink, (b) funciones de transferencia en Simulink, (c) circuito en Simscape Electrical, (d) cuaderno de MATLAB y (e) código de Python, para cada conjunto de parámetros.
-
-| Caso | Estado (Simulink) | Función de transferencia (Simulink) | Simscape | Cuaderno MATLAB | Python | ¿Consistentes? |
-|---|:---:|:---:|:---:|:---:|:---:|:---:|
-| Hipotenso | **[COMPLETAR]** | **[COMPLETAR]** | **[COMPLETAR]** | **[COMPLETAR]** | **[COMPLETAR]** | **[COMPLETAR]** |
-| Normotenso | **[COMPLETAR]** | **[COMPLETAR]** | **[COMPLETAR]** | **[COMPLETAR]** | **[COMPLETAR]** | **[COMPLETAR]** |
-| Hipertenso | **[COMPLETAR]** | **[COMPLETAR]** | **[COMPLETAR]** | **[COMPLETAR]** | **[COMPLETAR]** | **[COMPLETAR]** |
-
-Las diferencias que aparezcan pueden asociarse con el método numérico (*solver*), la discretización de la señal aleatoria o la implementación de los modelos.
-
-### Archivos de resultados
-
-> **[COMPLETAR]** Los nombres siguientes son **propuestas**; reemplázalos por los de tus archivos reales y ajusta las rutas.
-
-| Resultado | MATLAB/Simulink | Python |
-|---|---|---|
-| Lazo abierto (3 modelos) | [`lazo_abierto_matlab.pdf`](lazo_abierto_matlab.pdf) | [`lazo_abierto_python.pdf`](lazo_abierto_python.pdf) |
-| Lazo cerrado, caso hipotenso | [`hipo_pid_matlab.pdf`](hipo_pid_matlab.pdf) | [`hipo_pid_python.pdf`](hipo_pid_python.pdf) |
-| Lazo cerrado, caso hipertenso | [`hiper_pid_matlab.pdf`](hiper_pid_matlab.pdf) | [`hiper_pid_python.pdf`](hiper_pid_python.pdf) |
-
-[Volver al contenido](#contenido)
-
----
 
 <a id="discusion"></a>
 ## Discusión y conclusiones
@@ -498,11 +444,9 @@ Las diferencias que aparezcan pueden asociarse con el método numérico (*solver
 
 **Efecto de $C$ en la dinámica.** El análisis muestra que variar solo la distensibilidad arterial modifica la ubicación de los polos, la frecuencia natural y el amortiguamiento (de $\zeta=0.854$ en el caso hipotenso a $\zeta=1.597$ en el hipertenso). Como $G(0)=1$ en los tres modelos, el valor final ante un escalón es el mismo; la diferencia está en la rapidez y la forma del transitorio y en la atenuación de las variaciones rápidas de la entrada.
 
-**Lazo abierto.** **[COMPLETAR]** Compara las tres respuestas obtenidas y relaciónalas con los polos y las predicciones analíticas de la tabla de escalón.
+**Lazo abierto.** Compara las tres respuestas obtenidas y relaciónalas con los polos y las predicciones analíticas de la tabla de escalón.
 
-**Lazo cerrado.** **[COMPLETAR]** Analiza el efecto de cada PID sobre el seguimiento de la referencia, el error y el comportamiento transitorio; indica si fue necesario ajustar el criterio de sintonización y qué diferencias hubo entre el controlador del caso hipotenso y el del hipertenso.
-
-**Verificación entre plataformas.** **[COMPLETAR]** Indica el grado de concordancia entre Simulink, Simscape, MATLAB y Python, y las causas de cualquier discrepancia.
+**Lazo cerrado.**  Analiza el efecto de cada PID sobre el seguimiento de la referencia, el error y el comportamiento transitorio; indica si fue necesario ajustar el criterio de sintonización y qué diferencias hubo entre el controlador del caso hipotenso y el del hipertenso.
 
 **Limitaciones.** El modelo es lineal, de parámetros concentrados y de segundo orden; los casos hipotenso e hipertenso se generan modificando solo $C$, lo cual es una simplificación de condiciones fisiológicas reales. La entrada aleatoria constante por tramos no representa una onda de presión cardiaca real. Los resultados corresponden únicamente a simulación.
 
@@ -510,8 +454,6 @@ Las diferencias que aparezcan pueden asociarse con el método numérico (*solver
 
 - El modelo Windkessel de cuatro elementos es un sistema de **segundo orden** con un cero en $s=-Z/L$ y polos que dependen de $C$; los tres modelos resultan **estables**.
 - Con $G(0)=1$, el **error en estado estacionario ante un escalón es cero** en los tres casos; las diferencias entre condiciones son **transitorias**.
-- **[COMPLETAR]** Conclusión sobre el desempeño de los controladores PID en lazo cerrado (con base en tus resultados y métricas).
-- **[COMPLETAR]** Conclusión sobre la consistencia entre las cinco implementaciones.
 - Las estrategias de control desarrolladas tienen **fines académicos y de simulación** y **no** constituyen una recomendación terapéutica.
 
 [Volver al contenido](#contenido)
