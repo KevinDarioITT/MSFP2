@@ -12,7 +12,9 @@ El caso de estudio representa el **sistema arterial** mediante el **modelo Windk
 **Institución:** Tecnológico Nacional de México / Instituto Tecnológico de Tijuana  
 **Asignatura:** Modelado de Sistemas Fisiológicos  
 **Programa:** Ingeniería Biomédica  
-**Estudiante:** Kevin Dario De La Cruz Bojorquez · 20210777 · l20210777@tijuana.tecnm.mx
+**Estudiante:** Kevin Dario De La Cruz Bojorquez 
+**Numero de control** 20210777 
+**Correo** l20210777@tijuana.tecnm.mx
 
 **Repositorio de la asignatura:** https://github.com/DrPaulValle/MSF-IBF1020  
 **Sede:** Blvd. Alberto Limón Padilla s/n, Tijuana, C. P. 22454, B. C., México.
